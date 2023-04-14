@@ -130,7 +130,7 @@ export default function Home() {
           </div>   
           <section className="carousel w-screen flex flex-wrap justify-center mb-8">
             <div className="max-w-sm  m-4 p-6 border border-gray-200 rounded-lg shadow bg-gray-800 border-gray-700">
-                <Shuffle size={40} className="mb-2"/>
+                <Shuffle size={40} className="mb-2" color={"#fff"}/>
                 <a href="#">
                     <h5 className="mb-2 text-2xl font-semibold tracking-tight text-gray-900 text-white">Random</h5>
                 </a>
@@ -147,7 +147,7 @@ export default function Home() {
             </div>
 
             <div className="max-w-sm m-4 p-6 border border-gray-200 rounded-lg shadow bg-gray-800 border-gray-700">
-                <List size={40} className="mb-2"/>
+                <List size={40} className="mb-2" color={"#fff"}/>
                 <a href="#">
                     <h5 className="mb-2 text-2xl font-semibold tracking-tight text-gray-900 text-white">Color list</h5>
                 </a>
@@ -158,7 +158,7 @@ export default function Home() {
             </div>
 
             <div className="max-w-sm m-4 p-6 border border-gray-200 rounded-lg shadow bg-gray-800 border-gray-700">
-                <ImageIcon size={40} className="mb-2"/>
+                <ImageIcon size={40} className="mb-2" color={"#fff"}/>
                 <a href="#">
                     <h5 className="mb-2 text-2xl font-semibold tracking-tight text-gray-900 text-white">Image</h5>
                 </a>
