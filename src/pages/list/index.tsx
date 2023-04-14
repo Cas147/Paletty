@@ -23,8 +23,8 @@ const List:FC<ListProps> = () => {
         </div>
 
         <div className="flex justify-center items-center w-screen ">
-          <div className="flex justify-end items-center w-full md:w-11/12 lg:w-10/12">
-            <form className="w-6/12">   
+          <div className="flex justify-center pb-12 items-center w-full md:w-11/12 lg:w-10/12">
+            <form className="w-full md:w-6/12 px-4 md:px-0">   
               <label htmlFor="default-search" className="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Search</label>
               <div className="relative">
                   <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
@@ -42,8 +42,8 @@ const List:FC<ListProps> = () => {
           </div>
         </div>
         
-        <div className="flex p-4 bg-transparent flex w-screen items-center justify-center">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 w-full md:w-11/12 lg:w-10/12">
+        <div className="flex p-2 bg-transparent flex w-screen items-center justify-center">
+          <div className="grid gap-2 md:gap-4 grid-cols-2 md:grid-cols-3 lg:grid-cols-4 2xl:grid-cols-5 w-full md:w-11/12 lg:w-10/12">
             {colorList.
             filter((item: any) => item.name.toLowerCase().includes(search.toLowerCase()) || item.hex.toLowerCase().includes(search.toLowerCase()))
             .map((currentColor: IColors, index: number) => {
@@ -54,7 +54,6 @@ const List:FC<ListProps> = () => {
                   name={currentColor.name} 
                   width={"100%"} 
                   height={130} 
-                  padding
                 />
               )
             })}
