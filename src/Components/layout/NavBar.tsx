@@ -29,7 +29,7 @@ const Navbar = (props: Props) => {
       <div className="flex items-center shadow-2xl h-full mx-4">
         <Link 
          href={"/list"} 
-        className={styles.mainButton}>
+          className={styles.mainButton}>
           Color list
         </Link>
       </div>

@@ -17,12 +17,12 @@ export const defaultNavItems: NavItem[] = [
   },
   {
     label: "Color list",
-    href: `/Customers/`,
+    href: "/list",
     icon: <List className="w-6 h-6" />,
   },
   {
     label: "Image",
-    href: `/Bookings/`,
+    href: `/Image`,
     icon: <Image className="w-6 h-6" />,
   },
   {
