@@ -37,10 +37,10 @@ const Sidebar = ({ open, navItems = defaultNavItems, setOpen}: Props) => {
   });
 
   return (
-    <div className="h-screen p-0 md:p-4">
+    <div className="p-0 md:p-4">
       <div
         className={classNames({
-          "bg-indigo-50 backdrop-blur-sm text-zinc-50": true, // colors
+          "bg-transparent backdrop-blur-sm text-zinc-50 border-r-stone-500 border-r-2 rounded-r-3xl": true, // colors
           "md:sticky md:top-16 md:z-0 top-0 z-40 fixed": true, // positioning
           "h-screen md:h-full w-[300px]": true, // for height and width
           "transition-transform .3s ease-in-out md:-translate-x-0": true, //animations
@@ -49,7 +49,7 @@ const Sidebar = ({ open, navItems = defaultNavItems, setOpen}: Props) => {
         ref={ref}
       >
         <nav className="md:sticky top-0 md:top-1">
-           <Link href="/" className='flex items-center justify-center my-8 text-black font-bold text-4xl'>
+           <Link href="/" className='flex items-center justify-center my-8 text-white font-bold text-4xl'>
             Paletty
           </Link>
           <ul className="py-2 flex flex-col gap-2">
@@ -58,7 +58,7 @@ const Sidebar = ({ open, navItems = defaultNavItems, setOpen}: Props) => {
                 <Link key={index} href={item.href}>
                   <li
                     className={classNames({
-                      "text-indigo-900 hover:bg-indigo-500 hover:text-white": true, //colors
+                      "text-indigo-400 hover:bg-indigo-500 hover:text-white": true, //colors
                       "flex gap-4 items-center ": true, //layout
                       "transition-colors duration-300": true, //animation
                       "rounded-md p-2 mx-2": true, //self style

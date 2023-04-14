@@ -133,7 +133,7 @@ const Palette:FC<PaletteProps> = () => {
                             color={currentColor} 
                             width={"100%"} 
                             height={100}
-                            copy 
+                            copy
                           />
                         </div>
                       )
