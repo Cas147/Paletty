@@ -66,8 +66,9 @@ const Palette:FC<PaletteProps> = () => {
 
 
   return (
+    <div className="h-full">
       <Layout>
-        <div className="flex mt-16 bg-transparent flex w-screen items-center justify-center">
+        <div className="flex mt-16 bg-transparent h-full flex w-screen items-center justify-center">
 
           <ImageUploading
               multiple
@@ -197,6 +198,7 @@ const Palette:FC<PaletteProps> = () => {
           )}
         </div>
       </Layout>
+    </div>
   );
 };
 
