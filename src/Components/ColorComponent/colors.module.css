@@ -1,0 +1,7 @@
+.colorName {
+  display: none;
+}
+
+.container:hover .colorName {
+    display: block;
+} 

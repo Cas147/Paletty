@@ -1,0 +1,19 @@
+.refresh:hover,
+.refresh:focus {
+   filter: grayscale(100%) brightness(40%) sepia(100%) hue-rotate(-50deg) saturate(600%) contrast(0.8);
+  box-shadow: 0 0.5em 0.5em -0.4em linear-gradient(90deg, #03a9f4, #f441a5, #ffeb3b, #03a9f4);;
+  transform: translateY(-0.25em);
+  animation-name: spin;
+  animation-duration: 2000ms;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear; 
+}
+
+@keyframes spin {
+    from {
+        transform:rotate(0deg);
+    }
+    to {
+        transform:rotate(360deg);
+    }
+}
