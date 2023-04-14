@@ -24,7 +24,7 @@ const Navbar = (props: Props) => {
       Paletty
       </Link>
       <button className="md:hidden" onClick={props.onMenuButtonClick}>
-        <Menu className="h-6 w-6" />
+        <Menu className="h-6 w-6" color={"#fff"}/>
       </button>
       <div className="flex items-center shadow-2xl h-full mx-4">
         <Link 
