@@ -56,7 +56,7 @@ export default function Home() {
                     </h1>
                 </section>
 
-                <section className="carousel w-screen  md:w-6/12 my-4">
+                <section className="carousel w-full  md:w-6/12 my-4">
                   <Swiper
                     spaceBetween={10}
                     slidesPerView={3}
