@@ -34,12 +34,12 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title>Create Next App</title>
+        <title>Paletty</title>
         <meta name="description" content="Paletty" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main className="h-screen h-full">
+      <main className="h-full">
         <Layout>
           <div className="flex h-full p-4 bg-transparent sticky top-0 flex w-screen items-center justify-center">
             <div className="block md:flex h-full justify-between w-full md:w-11/12 lg:w-10/12 rounded-l-2xl shadow-lg">

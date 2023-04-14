@@ -16,7 +16,7 @@ const Layout:FC<LayoutProps> = ({children, title = ""}) => {
   const [openModal, setOpenModal] = useState<boolean>(false)
 
   return (
-    <div className="w-screen bg-black h-full">
+    <div className="w-screen bg-black">
       <Navbar onMenuButtonClick={() => setSidebarOpen((prev) => !prev)}/>
       {sidebarOpen && <Sidebar open={sidebarOpen} setOpen={setSidebarOpen} />}
       {children}

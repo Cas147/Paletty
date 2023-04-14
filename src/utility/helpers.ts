@@ -60,3 +60,30 @@ export async function getDominantColorsFromImageBase64(imageData: string, numCol
 function rgbToHex([r, g, b]: number[]): string {
   return "#" + [r, g, b].map(c => c.toString(16).padStart(2, "0")).join("");
 }
+
+export const isColorBright = (hexColor: string): boolean =>{
+  // Convert hex color to RGB values
+  const red = parseInt(hexColor.substr(1, 2), 16) / 255;
+  const green = parseInt(hexColor.substr(3, 2), 16) / 255;
+  const blue = parseInt(hexColor.substr(5, 2), 16) / 255;
+
+  // Calculate perceived brightness
+  const perceivedBrightness = (0.299 * red) + (0.587 * green) + (0.114 * blue);
+
+  // Determine if color is bright or dark
+  return perceivedBrightness > 0.8;
+}
+
+export const isColorDark = (hexColor: string): boolean =>{
+  // Convert hex color to RGB values
+  const red = parseInt(hexColor.substr(1, 2), 16) / 255;
+  const green = parseInt(hexColor.substr(3, 2), 16) / 255;
+  const blue = parseInt(hexColor.substr(5, 2), 16) / 255;
+
+  // Calculate perceived brightness
+  const perceivedBrightness = (0.299 * red) + (0.587 * green) + (0.114 * blue);
+
+  // Determine if color is bright or dark
+  return perceivedBrightness < 0.25;
+
+}

@@ -11,14 +11,16 @@ import Loader from "@/Components/Loader";
 import { RefreshCcw} from "react-feather";
 
 import styles from "./paeltte.module.css"
-import {getHexColorsFromString, removeDuplicate} from "@/utility/helpers";
+import {getHexColorsFromString, isColorDark, removeDuplicate} from "@/utility/helpers";
+import {colorList} from "@/utility/const";
+import {IColors} from "@/types";
 
 interface PaletteProps {
 }
 
 const Palette:FC<PaletteProps> = () => {
   const router = useRouter()
-  const {color} = router.query
+  const {color}: any = router.query
   const [result, setResult] = useState<any>("")
   const [formatedResult, setFormatedResult] = useState<string[]>([])
   const [isloading, setIsloading] = useState<boolean>(false)
@@ -47,7 +49,6 @@ const Palette:FC<PaletteProps> = () => {
     setFormatedResult(arr)
   } , [result])
 
-
   return (
     <main className="h-screen">
       <Layout>
@@ -60,7 +61,16 @@ const Palette:FC<PaletteProps> = () => {
 
           ) : (
             <div className="w-full md:w-11/12 lg:w-10/12 my-16">
-              <div className="py-8 px-4 flex justify-end">
+              <div className="py-8 px-4 flex justify-between items-center">
+                <div className="flex">
+                  <p className="text-white text-4xl font-bold">Main color: </p>
+                  <div className="flex items-center" style={{color: `#${color}`, backgroundColor: `${!isColorDark(`#${color}`) ? `transparent` : "#fff"}`}}>
+                    <p className="text-4xl font-bold ml-2"> #{color}</p>
+                    <p className="text-4xl font-bold ml-2">({(colorList || []).find((currenColor: IColors) => {
+                      return currenColor.hex === `#${color}`
+                    })?.name})</p>
+                  </div>
+                </div>
                 <RefreshCcw 
                   className={`cursor-pointer ${styles.refresh}`}
                   size={24}

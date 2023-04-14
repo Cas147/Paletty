@@ -15,6 +15,9 @@ import {getHexColorsFromString, removeDuplicate, getDominantColorsFromImageBase6
 
 import ImageUploading, { ImageListType } from "react-images-uploading";
 
+//styles
+import stylesButton from "@/Components/layout/layout.module.css"
+
 interface PaletteProps {
 }
 
@@ -28,20 +31,27 @@ const Palette:FC<PaletteProps> = () => {
   const [images, setImages] = useState<any>([]);
   const maxNumber = 1;
 
-  const onChange = (
-    imageList: ImageListType,
+  const onChange = async(
+    imageList: any,
     addUpdateIndex: number[] | undefined
   ) => {
     // data for submit
-    console.log(imageList, addUpdateIndex);
-    setImages(imageList as never[]);
+    setImages(imageList)
+    let arrayOfColors: any = await getDominantColorsFromImageBase64(imageList[0].dataURL, 10)
+    arrayOfColors = removeDuplicate(arrayOfColors)
+    setFormatedResult(arrayOfColors)
+    
   };
+
 
   const handlegeneratePalette = async(selectedColor: any) => {
     try {
       setIsloading(true)
-      const result = await generatePalette(`#${selectedColor}`)
-      setResult(result)
+      const result: any = await generatePalette(`#${selectedColor}`)
+      let arr: string[] = getHexColorsFromString(result)
+      arr = removeDuplicate(arr)
+
+    setGeneratedResult(arr)
       setIsloading(false)
     } catch(error: any) {
       setIsloading(false)
@@ -50,75 +60,52 @@ const Palette:FC<PaletteProps> = () => {
     }
   }
 
-/*   useEffect(() => {
-  handlegeneratePalette(color)
-  } , []) */
-
-  const getColors = async() => {
-    let arrayOfColors = await getDominantColorsFromImageBase64(images[0].dataURL, 10)
-    arrayOfColors = removeDuplicate(arrayOfColors)
-    setFormatedResult(arrayOfColors)
-    return arrayOfColors
-  }
-
-  useEffect(() => {
-    if (images.length > 0) {
-      getColors()
-    }
-  } , [images])
-
-  useEffect(() => {
-    let arr: string[] = getHexColorsFromString(result)
-    arr = removeDuplicate(arr)
-
-    setGeneratedResult(arr)
-  } , [generatedResult])
 
   return (
     <main className="h-screen">
       <Layout>
         <div className="flex mt-16 bg-transparent flex w-screen items-center justify-center">
 
-        <ImageUploading
-            multiple
-            value={images}
-            onChange={onChange}
-            maxNumber={maxNumber}
-          >
-            {({
-              imageList,
-              onImageUpload,
-              onImageRemoveAll,
-              onImageUpdate,
-              onImageRemove,
-              isDragging,
-              dragProps
-            }) => (
-              // write your building UI
-              <div className="upload__image-wrapper">
-                <div 
-                  className="drag-image" 
-                  onClick={onImageUpload} 
-                  {...dragProps}
-                  style={isDragging ? { border: "1px red solid" } : undefined}
-                  >
-                  <Upload />
-                  <h6>Drag or Drop image here</h6>
-                  <span>OR</span>
-                  <button>Browse File</button>
-                </div>
-                <button onClick={onImageRemoveAll}><X /></button>
-                {imageList.map((image, index) => (
-                  <div key={index} className="image-item">
-                    <img src={image.dataURL} alt="" width="100" />
-                    <div className="image-item__btn-wrapper">
-                      <button onClick={() => onImageUpdate(index)}>Update</button>
-                      <button onClick={() => onImageRemove(index)}>Remove</button>
-                    </div>
+          <ImageUploading
+              multiple
+              value={images}
+              onChange={onChange}
+              maxNumber={maxNumber}
+            >
+              {({
+                imageList,
+                onImageUpload,
+                onImageRemoveAll,
+                onImageUpdate,
+                onImageRemove,
+                isDragging,
+                dragProps
+              }) => (
+                // write your building UI
+                <div className="upload__image-wrapper">
+                  <div 
+                    className="drag-image" 
+                    onClick={onImageUpload} 
+                    {...dragProps}
+                    style={isDragging ? { border: "1px red solid" } : undefined}
+                    >
+                    <Upload />
+                    <h6>Drag or Drop image here</h6>
+                    <span>OR</span>
+                    <button className={stylesButton.mainButton} >Browse File</button>
                   </div>
-                ))}
-              </div>
-            )}
+                  <button onClick={onImageRemoveAll}><X /></button>
+                  {imageList.map((image, index) => (
+                    <div key={index} className="image-item">
+                      <img src={image.dataURL} alt="" width="100" />
+                      <div className="image-item__btn-wrapper">
+                        <button onClick={() => onImageUpdate(index)}>Update</button>
+                        <button onClick={() => onImageRemove(index)}>Remove</button>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              )}
           </ImageUploading>
 
         </div>
