@@ -1,9 +1,10 @@
 import { ChatCompletionRequestMessageRoleEnum, Configuration, OpenAIApi } from 'openai'
 
 const configuration = new Configuration({
-  apiKey: "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",
+  apiKey: process.env.NEXT_PUBLIC_OPENAI_API_KEY,
 });
 const openai = new OpenAIApi(configuration);
+
 
 export default async function generatePalette(color: string) {
     const completion = await openai.createChatCompletion({

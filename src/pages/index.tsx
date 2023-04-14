@@ -28,6 +28,7 @@ export default function Home() {
     let newArr = [...colorList]
     newArr = newArr.sort(() => 0.5 - Math.random()).slice(0,15)
     setRandomColors(newArr)
+
   }, [])
 
   return (
