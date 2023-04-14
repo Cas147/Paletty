@@ -62,11 +62,11 @@ const Palette:FC<PaletteProps> = () => {
           ) : (
             <div className="w-full md:w-11/12 lg:w-10/12 my-16">
               <div className="py-8 px-4 flex justify-between items-center">
-                <div className="flex">
-                  <p className="text-white text-4xl font-bold">Main color: </p>
-                  <div className="flex items-center" style={{color: `#${color}`, backgroundColor: `${!isColorDark(`#${color}`) ? `transparent` : "#fff"}`}}>
-                    <p className="text-4xl font-bold ml-2"> #{color}</p>
-                    <p className="text-4xl font-bold ml-2">({(colorList || []).find((currenColor: IColors) => {
+                <div className="flex flex-wrap">
+                  <p className="text-white text-2xl md:text-4xl font-bold">Main color: </p>
+                  <div className="flex items-center flex-wrap" style={{color: `#${color}`, backgroundColor: `${!isColorDark(`#${color}`) ? `transparent` : "#fff"}`}}>
+                    <p className="text-2xl md:text-4xl font-bold ml-0 md:ml-2"> #{color}</p>
+                    <p className="text-2xl md:text-4xl font-bold ml-2">({(colorList || []).find((currenColor: IColors) => {
                       return currenColor.hex === `#${color}`
                     })?.name})</p>
                   </div>
@@ -79,7 +79,7 @@ const Palette:FC<PaletteProps> = () => {
               </div>
               {formatedResult?.length > 0 && (
                 <div className="flex p-4 w-full bg-transparent flex items-center justify-center">
-                  <div className={`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-4 w-screen w-full`}>
+                  <div className={`grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-4 w-screen w-full`}>
                     {(formatedResult || [])?.map((currentColor: string, index: number) => {
                       return (
                         <Color 
