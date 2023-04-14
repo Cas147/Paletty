@@ -44,12 +44,13 @@ const Color:FC<ColorProps> = ({color="#fff", width = 100,  height = 100, name, p
         </Link >
       )} 
       {name &&
-        <div className="flex justify-between items-center">
-          <span>{name}</span>
+        <div className="flex text-white justify-between items-center">
+          <span className="text-withe">{name}</span>
           <ClipboardIcon 
             size={16} 
             className="cursor-pointer"
             onClick={() => handleClipboard(color)}
+            color={"#fff"}
             />
         </div>
       }

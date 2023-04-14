@@ -20,7 +20,7 @@ const Loader:FC<LoaderProps> = ({ text, size = 80 }) => {
         colors={['#03a9f4', '#f441a5', '#f8b26a', '#ffeb3b', '#03a9f4']}
       />
       {text && 
-        <p className="text-6xl font-bold">{text}</p>
+        <p className="text-6xl font-bold text-white">{text}</p>
       }
     </>
   );

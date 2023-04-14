@@ -17,9 +17,9 @@ const List:FC<ListProps> = () => {
   return (
     <main className="h-screen">
       <Layout>
-        <div className="text-center my-16">
-          <h1 className="text-8xl my-8">Colors</h1>
-          <h2 className="text-4xl">Browse our library of more than 600 color names.</h2>
+        <div className="text-center my-8 md:my-16">
+          <h1 className="text-8xl text-white my-4  md:my-8">Colors</h1>
+          <h2 className="text-4xl text-white">Browse our library of more than 600 color names.</h2>
         </div>
 
         <div className="flex justify-center items-center w-screen ">

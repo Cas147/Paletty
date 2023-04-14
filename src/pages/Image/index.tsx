@@ -47,11 +47,15 @@ const Palette:FC<PaletteProps> = () => {
   const handlegeneratePalette = async(selectedColor: any) => {
     try {
       setIsloading(true)
+      document.querySelector("#paletteContainer")?.scrollIntoView({
+        behavior: 'smooth'
+      })
       const result: any = await generatePalette(`#${selectedColor}`)
+
       let arr: string[] = getHexColorsFromString(result)
       arr = removeDuplicate(arr)
 
-    setGeneratedResult(arr)
+      setGeneratedResult(arr)
       setIsloading(false)
     } catch(error: any) {
       setIsloading(false)
@@ -62,7 +66,6 @@ const Palette:FC<PaletteProps> = () => {
 
 
   return (
-    <main className="h-screen">
       <Layout>
         <div className="flex mt-16 bg-transparent flex w-screen items-center justify-center">
 
@@ -115,13 +118,13 @@ const Palette:FC<PaletteProps> = () => {
             {formatedResult?.length > 0 && (
               <div>
                 <div className="flex items-center h-full">
-                <p className="font-bold text-4xl">
+                <p className="font-bold text-4xl text-white">
                 Palette color from image
                 </p>
                 <span className="text-xl ml-2">(Pick a color to create a new palette)</span>
                 </div>
                 <div className="flex w-full bg-transparent flex justify-center">
-                  <div className={`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-4 w-screen w-full`}>
+                  <div className={`grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-4 w-screen w-full`}>
                     {(formatedResult || [])?.map((currentColor: string, index: number) => {
                       return (
                         <div key={index} onClick={() => handlegeneratePalette(currentColor)}>
@@ -150,7 +153,7 @@ const Palette:FC<PaletteProps> = () => {
 
         <div className="flex p-4 bg-transparent flex w-screen items-center justify-center">
           {isloading ? (
-            <div className="flex flex-col w-screen h-screen justify-center items-center">
+            <div id="paletteContainer" className="flex flex-col w-screen h-screen justify-center items-center">
               <Loader size={200} text="Generating palette"/>
             </div>
 
@@ -159,7 +162,7 @@ const Palette:FC<PaletteProps> = () => {
               {generatedResult?.length > 0 && (
                 <div className="w-full md:w-11/12 lg:w-10/12 my-16">
                     <div className="py-8 px-4 flex justify-between">
-                    <p className="font-bold text-4xl">Palette color from IA</p>
+                    <p className="font-bold text-4xl text-white">Palette color from IA</p>
                       <RefreshCcw 
                         className={`cursor-pointer ${styles.refresh}`}
                         size={24}
@@ -167,7 +170,7 @@ const Palette:FC<PaletteProps> = () => {
                       />
                     </div>
                       <div className="flex p-4 w-full bg-transparent flex items-center justify-center">
-                        <div className={`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-4 w-screen w-full`}>
+                        <div className={`grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-4 w-screen w-full`}>
                           {(generatedResult || [])?.map((currentColor: string, index: number) => {
                             return (
                               <Color 
@@ -194,7 +197,6 @@ const Palette:FC<PaletteProps> = () => {
           )}
         </div>
       </Layout>
-    </main>  
   );
 };
 
